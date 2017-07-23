@@ -39,12 +39,16 @@ MOST_LOVED_MELONS = {
 def show_homepage():
     "Displays homepage"
 
-    return render_template('homepage.html')
+    if "session_name" in session:
+        return redirect("/top-melons")
+    else:
+        return render_template('homepage.html')
 
 
 @app.route("/get-name")
 def get_name():
     "Saves name in session"
+
     session["session_name"] = request.args.get("name")
     return redirect("/top-melons")
 
@@ -53,12 +57,15 @@ def get_name():
 def show_top_melons():
     "Display info and images of top melons"
 
-    return render_template("top-melons.html", melon_dict=MOST_LOVED_MELONS)
+    if "session_name" in session:
+        return render_template("top-melons.html", melon_dict=MOST_LOVED_MELONS)
+    else:
+        return redirect("/")
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the
     # point that we invoke the DebugToolbarExtension
-    app.debug = True
+    app.debug = False
 
     # Use the DebugToolbar
     DebugToolbarExtension(app)
