@@ -6,10 +6,13 @@
 </head>
 <body>
 
+<h1>Welcome, {{ session["session_name"] }}</h1>
+<br>
+<br>
 <!-- Create a div for every Most Loved Melon using a Jinja for loop -->
  {% for melon in melon_dict %}
     <div class='melon-div'>
-        <h3>{{ melon_dict[melon]['name'] }}</h3>
+        <h3>{{ session["session_name"] }} this is a {{ melon_dict[melon]['name'] }}</h3>
         <h2>{{ melon_dict[melon]['num_loves'] }}</h2>
         <img src={{ melon_dict[melon]['img'] }}>
     </div>
