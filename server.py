@@ -35,10 +35,17 @@ MOST_LOVED_MELONS = {
 }
 
 
+@app.route("/")
+def show_homepage():
+    "Displays homepage"
+
+    return render_template('homepage.html')
+
+
 @app.route('/top-melons')
 def show_top_melons():
     "Show images of top melons"
-    # melon_dict = MOST_LOVED_MELONS
+
     return render_template('top-melons.html', melon_dict=MOST_LOVED_MELONS)
 
 if __name__ == "__main__":
