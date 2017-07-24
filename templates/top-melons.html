@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Top Melons</title>
-    <link rel="stylesheet" type="text/css" href="/static/styles.css">
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Top Melons{% endblock %}
 
+{% block content %}
     <h1>Welcome, {{ session["session_name"] }}</h1>
     <br>
     {% for melon in melon_dict %}
@@ -15,6 +11,4 @@
             <img src={{ melon_dict[melon]['img'] }}>
         </div>
     {% endfor %}
-
-</body>
-</html>
+{% endblock %}
